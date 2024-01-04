@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #LoginDiv
+        {
+            margin-left: 33%;
+            margin-right: 50%;
+        }
+        #SingupDiv
+        {
+            margin-left: 33%;
+            margin-right: 40%;
+        }
+        #Forgetpass
+        {
+            margin-left: 33%;
+            margin-right: 50%;
+        }
+        #button1
+        {
+            margin-left: 33%;
+            margin-right: 50%;
+        }
+        #button2
+        {
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+        fieldset:target
+        {
+            display: block;
+        }
+        fieldset:not(:target)
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <fieldset id="LoginDiv">
+        <h2 style="text-align: center;">Login Form</h2>
+        <label>Username</label>
+        <input type="text" class="username1" placeholder="username"><br><br>
+        <label>Password</label>
+        <input type="password" class="password1" placeholder="password"><br><br>
+         
+        <button id="button1" type="button">Login</button><br><br>
+        <button id="button2"><a href="#Forgetpass">Forget Password</a></button><br><br>
+        <a href="#SingupDiv">Don't Have an account</a>
+        <button ><a href="#SingupDiv" onclick="getvalue()">Sign_Up</a></button>
+    </fieldset><br><br>
+
+    <fieldset id="SingupDiv" style="width:150; height: 350px;">
+        <h2 style="text-align: center;">Sign_Up Form</h2>
+        <label>Username</label>
+        <input type="text" class="username1" placeholder="username"><br><br>
+        <label>Password</label>
+        <input type="password" class="password1"  placeholder="password"><br><br>
+        <label>Age</label>
+        <input type="text" class="age" placeholder="age"><br><br>
+        <label>Gender</label>
+        <input type="text" class="gender" placeholder="gender"><br><br>
+        <label>Phone Numbder</label>
+        <input type="tel" class="phone numbder" placeholder="phone number"><br><br>
+        <button id="button3" type="button" onclick="addvalue()">SignUp</button><br><br>
+    </fieldset><br><br>
+
+    <fieldset id="Forgetpass">
+        <h2 style="text-align: center;">Forget Password Form</h2>
+        <label>Username</label>
+        <input type="text" class="username1" placeholder="username"><br><br>
+        <label>Password</label>
+        <input type="password" class="newpassword" placeholder="new password"><br><br>
+        <button id="button4" type="button" onclick="newpass()">Update</button><br><br>
+    </fieldset><br><br>
+
+    <a href="#SingupDiv">Sign_Up</a><br><br>
+    <a href="#LoginDiv">Sign_In</a>
+
+
+    <script>
+        var userData = {name:'' , password: '' , age:'' , gender: '' , phonenumber:''}
+        function addvalue()
+        {
+            var numbers = /[\d]/;
+            var letars = /[a-zA-Z]/;
+            var special_Char = /[!@#$%^&*()?]/;
+
+            var Username = document.getElementsByClassName('username1').value;
+            var Password = document.getElementsByClassName('password1').value;
+            var Age = document.getElementsByClassName('age').value;
+            var Gender = document.getElementsByClassName('gender').value;
+            var Phone_Number = document.getElementsByClassName('phone number').value;
+            var obj = {name:Username , password: Password};
+               
+
+            if(Username !="" && Password !="" && Age !="" && Gender !="" && Phone_Number !="" && Age >18 && Age <60 && Phone_Number == 11 && Password <8) 
+            {
+                userData.push(obj);
+                alert("Data Saved");
+            }
+            if(numbers.test(Password) && letars.test(Password) && special_Char.test(Password))
+            {
+                userData.push(obj);
+                alert("Data Saved");
+                return true;
+            }
+            else
+            {
+                alert("Data Not Saved!");
+               return false;
+            }
+          
+            function check()
+            {
+                var Password = document.getElementsByClassName('password1').value;
+
+            }
+        }
+            function getvalue()
+            {
+                var Username = document.getElementsByClassName('username1').value;
+                var Password = document.getElementsByClassName('password1').value;
+
+                if(Username == userData.name && Password == userData.password)
+                {
+                    alert("Login Succssesfully");
+                    return true;
+                }
+                else
+                {
+                    alert("Login Not Succssesfully");
+                    return false;
+                }
+            }
+            function newpass()
+            {
+                var Username3 = document.getElementsByClassName('username1').value;
+                var New_Password = document.getElementsByClassName('newpassword').value;
+                for(var i=0; i < userData.length ; i++)
+                {
+                    if(Username3 == userData[i].name)
+                    {
+                        userData[i].password = New_Password;
+                    }
+                }
+            }
+    </script>
+</body>
+</html> 

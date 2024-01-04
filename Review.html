@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fied
+        {
+            width: 300px;
+            background-color: gray;
+            border-radius: 30px;
+        }
+        #bt
+        {
+            background-color: rgb(35, 230, 35);
+            margin-left: 120px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+      <fieldset id="fied">
+        <table id="table">
+            <tr>
+                <td>
+                    <h3>Q1- Are you satisfied with our service?</h3>
+                    <input type="radio" class="gender" value="a" name="radio1">Yes
+                    <input type="radio" class="gender" value="b" name="radio1">No
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>Q1- Do you find our website user-frindly?</h3>
+                    <input type="radio" class="gender" value="a" name="radio2">Yes
+                    <input type="radio" class="gender" value="b" name="radio2">No
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3>Q1- Do you find our website user-frindly?</h3>
+                    <input type="radio" class="gender" value="a" name="radio3">Yes
+                    <input type="radio" class="gender" value="b" name="radio3">No
+                </td>
+            </tr>
+        </table>
+        <input id="bt" type="button" value="Submit" onclick="Score()">
+    </fieldset>
+
+    <Script>
+        function Score()
+        {
+            var Questions = document.querySelectorAll('input[type="radio"]:checked');
+            var score = 0;
+
+            Questions.forEach(function (Q)
+            {
+               if(Q.value === 'a')
+               {
+                   score++;
+               }
+            }
+            );
+            alert("The Total Of Yes = " + score);
+        }
+    </Script>
+</body> 
+</html>
